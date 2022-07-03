@@ -1,13 +1,14 @@
 package ru.itis.taxi.models;
 
 import java.util.StringJoiner;
+import java.util.UUID;
 
 public class User {
-    private Long id;
-    private static String firstName = null;
+    private UUID id;
+    private static String firstName;
     private final String lastName;
-    private static String email = null;
-    private static String password = null;
+    private static String email;
+    private static String password;
 
     public User(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;
@@ -16,7 +17,7 @@ public class User {
         this.password = password;
     }
 
-    public User(Long id, String firstName, String lastName, String email, String password) {
+    public User(UUID id, String firstName, String lastName, String email, String password) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -24,11 +25,11 @@ public class User {
         this.password = password;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 

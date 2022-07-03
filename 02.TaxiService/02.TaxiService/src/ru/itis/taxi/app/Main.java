@@ -18,10 +18,6 @@ public class Main {
 
         usersService.signUp(new SignUpForm("Камила", "Дмитриева",
                 "dmitrieva.kamila@mail.com", "kdt2003"));
-        usersRepository.update("");
-        usersRepository.delete("");
-        usersRepository.deleteById();
-        usersRepository.findAll();
 
         int i = 0;
     }

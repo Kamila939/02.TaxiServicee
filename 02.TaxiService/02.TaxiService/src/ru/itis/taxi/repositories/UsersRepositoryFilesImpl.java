@@ -1,16 +1,16 @@
 package ru.itis.taxi.repositories;
 
+import com.sun.security.auth.UnixNumericUserPrincipal;
 import ru.itis.taxi.models.User;
 
 import java.io.*;
 import java.util.List;
-import java.util.Optional;
+import java.util.UUID;
 import java.util.function.Function;
-
 public class UsersRepositoryFilesImpl implements UsersRepository {
 
     private final String fileName;
-    private long counter;
+
 
     private static final Function<User, String> userToString = user ->
             user.getId()
@@ -21,7 +21,6 @@ public class UsersRepositoryFilesImpl implements UsersRepository {
 
     public UsersRepositoryFilesImpl(String fileName) {
         this.fileName = fileName;
-        this.counter = 0;
     }
 
     @Override
@@ -31,8 +30,7 @@ public class UsersRepositoryFilesImpl implements UsersRepository {
 
     @Override
     public void save(User entity) {
-        counter++;
-        entity.setId(counter);
+        entity.setId(UUID.randomUUID());
         try (Writer writer = new FileWriter(fileName, true);
              BufferedWriter bufferedWriter = new BufferedWriter(writer)) {
 
@@ -56,12 +54,14 @@ public class UsersRepositoryFilesImpl implements UsersRepository {
     }
 
     @Override
-    public void deleteById(Long aLong) {
+    public void deleteById(UUID id) {
 
     }
 
     @Override
-    public User findById(Long aLong) {
+    public User findById(UUID id) {
         return null;
     }
 }
+
+
